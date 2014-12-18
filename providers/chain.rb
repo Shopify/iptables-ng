@@ -38,6 +38,13 @@ def edit_chain(exec_action)
     policy = '- [0:0]'
   end
 
+  directory "#{node['iptables-ng']['scratch_dir']}/#{new_resource.table}" do
+    owner  'root'
+    group  node['root_group']
+    mode   00700
+    not_if { exec_action == :delete }
+  end
+
   directory "#{node['iptables-ng']['scratch_dir']}/#{new_resource.table}/#{new_resource.chain}" do
     owner  'root'
     group  node['root_group']
