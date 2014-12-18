@@ -33,7 +33,7 @@ module Iptables
           "#{node['iptables-ng']['scratch_dir']}/*/*/default"].each do |path|
 
         # #{node['iptables-ng']['scratch_dir']}/#{table}/#{chain}/#{rule}.rule_v#{ip_version}
-        filename.slice! "#{node['iptables-ng']['scratch_dir']}"
+        path.slice! "#{node['iptables-ng']['scratch_dir']}"
         table, chain, filename = path.split('/')[1..3]
         rule = ::File.basename(filename)
 
