@@ -46,7 +46,7 @@ module Iptables
         # Create hashes unless they already exist, and add the rule
         rules[table] ||= {}
         rules[table][chain] ||= {}
-        rules[table][chain][rule] = ::File.read(path)
+        rules[table][chain][rule] = ::File.read("#{node['iptables-ng']['scratch_dir']}/path")
       end
 
       iptables_restore = ''
