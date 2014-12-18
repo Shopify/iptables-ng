@@ -33,7 +33,8 @@ module Iptables
           "#{node['iptables-ng']['scratch_dir']}/*/*/default"].each do |path|
 
         # #{node['iptables-ng']['scratch_dir']}/#{table}/#{chain}/#{rule}.rule_v#{ip_version}
-        table, chain, filename = path.split('/')[3..5]
+        filename.slice! "#{node['iptables-ng']['scratch_dir']}"
+        table, chain, filename = path.split('/')[1..3]
         rule = ::File.basename(filename)
 
         # ipv6 doesn't support nat
