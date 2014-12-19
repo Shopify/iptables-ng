@@ -145,7 +145,7 @@ You can also delete old rules by specifying a custom action.
 
 ## install
 
-The install recipe installs iptables packages, makes sure that ```#{node['iptables-ng']['scratch_dir']}``` (/etc/iptables.d by default) is created and sets all default policies to "ACCEPT", unless they are already configured.
+The ```install``` recipe installs iptables packages, makes sure that ```#{node['iptables-ng']['scratch_dir']}``` (/etc/iptables.d by default) is created and sets all default policies to "ACCEPT", unless they are already configured.
 
 On Debian and Ubuntu systems, it also removes the "ufw" package, as it might interferre with this cookbook.
 
